@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const Navbar = () => (
   <React.Fragment>
-    <Link to="/">Home.</Link>
+    <Link to="/">Home</Link>
   </React.Fragment>
 )
 
