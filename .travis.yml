@@ -6,4 +6,3 @@ cache:
   - node_modules
 script:
   - npm run client
-  - npm run server
