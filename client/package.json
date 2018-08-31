@@ -9,14 +9,15 @@
     "build": "webpack --config webpack.prod.js",
     "lint": "eslint ./src --ext .js --ext .jsx && sass-lint -v -q",
     "format": "prettier-standard 'src/**/*.{js,jsx}' ",
-    "commitmsg": "commitlint -E GIT_PARAMS"
+    "commitmsg": "commitlint -E GIT_PARAMS",
+    "precommit": "npm run format && npm run lint"
   },
   "author": "",
   "license": "ISC",
-  "pre-commit": [
-    "format",
-    "lint"
-  ],
+  // "pre-commit": [
+  //   "format",
+  //   "lint"
+  // ],
   "dependencies": {
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
