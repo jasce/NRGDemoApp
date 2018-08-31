@@ -19,7 +19,7 @@ class BookList extends Component {
   }
 
   _renderBooks = books => (
-    <ul>
+    <ul className="book-list">
       {books.map(book => (
         <li key={book.id} onClick={this.handleClick.bind(this, book.id)}>
           {book.name}

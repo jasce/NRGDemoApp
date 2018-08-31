@@ -10,8 +10,6 @@ class BookDetail extends Component {
   }
 
   static propTypes = {
-    addBook: PropTypes.func.isRequired,
-    authorsList: PropTypes.array.isRequired,
     data: PropTypes.object
   }
 
@@ -40,7 +38,7 @@ class BookDetail extends Component {
 
   render() {
     return (
-      <div id="book-details">
+      <div className="book-details-container">
         <p>Book Details:</p>
         {this._renderBookData()}
       </div>

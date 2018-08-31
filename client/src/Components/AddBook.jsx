@@ -5,12 +5,13 @@ import { graphql, compose } from 'react-apollo'
 import { getAuthorsQuery, addBookMutation, getBooksQuery } from 'Queries'
 class AddBook extends Component {
   static defaultProps = {
-    data: {}
+    data: {},
+    authorsList: {}
   }
 
   static propTypes = {
     addBook: PropTypes.func.isRequired,
-    authorsList: PropTypes.array.isRequired,
+    authorsList: PropTypes.object,
     data: PropTypes.object
   }
 
@@ -61,7 +62,7 @@ class AddBook extends Component {
     const { bookName, genre, author } = this.state
     console.log(this.props)
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit} className="add-book-form">
         <div className="field">
           <label>Book Name:</label>
           <input

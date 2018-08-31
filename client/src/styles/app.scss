@@ -1,5 +1,101 @@
 $body-color: #f1f3f5;
+$dark-grey: #444;
+$book-border: #880e4f;
+$border-detail-background: #ad1457;
+$box-shadow-color: rgba(0, 0, 0, .3);
+$white: #fff;
+
+* {
+  box-sizing: border-box;
+}
 
 body {
   background: $body-color;
+  font-family: 'Nunito', sans-serif;
+}
+
+.app-container {
+  box-sizing: border-box;
+  height: 100%;
+  padding: 0;
+  width: 60%;
+
+  h1 {
+    color: $dark-grey;
+    text-align: center;
+  }
+
+}
+
+.book-list {
+  padding: 0;
+  li {
+    border: 1px solid $book-border;
+    border-radius: 4px;
+    box-shadow: 1px 2px 3px $box-shadow-color;
+    color: $book-border;
+    cursor: pointer;
+    display: inline-block;
+    margin: 12px;
+    padding: 10px;
+  }
+
+}
+
+.add-book-form {
+  background: $white;
+  bottom: 0;
+  left: 0;
+  padding: 20px;
+  position: fixed;
+  width: 400px;
+  & label {
+    box-sizing: border-box;
+    padding: 6px;
+    text-align: right;
+  }
+
+  .field {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  select {
+    box-sizing: border-box;
+    margin: 4px;
+    padding: 6px;
+  }
+
+  input {
+    box-sizing: border-box;
+    margin: 4px;
+    padding: 6px;
+  }
+
+  button {
+    background: $border-detail-background;
+    border: 0;
+    border-radius: 50%;
+    bottom: 10px;
+    color: $white;
+    cursor: pointer;
+    font-size: 2rem;
+    padding: 0 10px;
+    position: absolute;
+  }
+
+}
+
+.book-details-container {
+  background: $border-detail-background;
+  box-shadow: -2px -3px 5px $box-shadow-color;
+  color: $white;
+  height: 100%;
+  overflow: auto;
+  padding: 30px;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 40%;
 }

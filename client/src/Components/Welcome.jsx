@@ -11,9 +11,11 @@ const client = new ApolloClient({
 
 const Welcome = () => (
   <ApolloProvider client={client}>
-    <h1>Welcome Abroad!</h1>
-    <BookList />
-    <AddBook />
+    <div className="app-container">
+      <h1>Welcome Abroad!</h1>
+      <BookList />
+      <AddBook />
+    </div>
   </ApolloProvider>
 )
 
