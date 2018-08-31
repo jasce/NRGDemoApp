@@ -1,0 +1,10 @@
+language: node_js
+node_js:
+  - "stable"
+cache:
+  directories:
+  - node_modules
+script:
+  - cd client && npm test
+  - cd client && npm run build
+  - cd server && node app

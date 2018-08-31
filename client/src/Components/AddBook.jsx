@@ -52,11 +52,21 @@ class AddBook extends Component {
       <form onSubmit={this.handleSubmit}>
         <div className="field">
           <label>Book Name:</label>
-          <input type="text" name="bookName" value={bookName} onChange={this.handleChange} />
+          <input
+            type="text"
+            name="bookName"
+            value={bookName}
+            onChange={this.handleChange}
+          />
         </div>
         <div className="field">
           <label>Genre:</label>
-          <input type="text" name="genre" value={genre} onChange={this.handleChange} />
+          <input
+            type="text"
+            name="genre"
+            value={genre}
+            onChange={this.handleChange}
+          />
         </div>
         <div className="field">
           <label>Author:</label>
