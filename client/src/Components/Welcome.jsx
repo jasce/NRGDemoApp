@@ -1,5 +1,22 @@
 import React from 'react'
+import { ApolloProvider } from 'react-apollo'
+import { ApolloClient } from 'apollo-boost'
+import BookList from './BookList'
 
-const Welcome = () => <h1>Welcome Abroad!</h1>
+// Apollo Client Configuration
+const client = new ApolloClient({
+  uri: 'http://localhost:4000/graphql'
+})
+
+const Welcome = () => (
+  <ApolloProvider client={client}>
+    <h1>Welcome Abroad!</h1>
+    <BookList />
+  </ApolloProvider>
+)
+
+
+
+
 
 export default Welcome
