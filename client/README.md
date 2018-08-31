@@ -1,5 +1,5 @@
 # RA(React Apollo) Setup
-[![Build Status](https://travis-ci.org/jasce/NRGDemoApp.svg?branch=master)](https://travis-ci.org/jasce/NRGDemoApp)
+[![Build Status](https://travis-ci.org/jasce/NRGDemoApp.svg?branch=dev)](https://travis-ci.org/jasce/NRGDemoApp)
 
 
 ### Instructions
