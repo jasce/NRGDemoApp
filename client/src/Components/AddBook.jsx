@@ -1,14 +1,16 @@
 import React, { Fragment, Component } from 'react'
 import PropTypes from 'prop-types'
 
-import { graphql } from 'react-apollo'
-import { getAuthorsQuery } from 'Queries'
+import { graphql, compose } from 'react-apollo'
+import { getAuthorsQuery, addBookMutation, getBooksQuery } from 'Queries'
 class AddBook extends Component {
   static defaultProps = {
     data: {}
   }
 
   static propTypes = {
+    addBook: PropTypes.func.isRequired,
+    authorsList: PropTypes.array.isRequired,
     data: PropTypes.object
   }
 
@@ -43,11 +45,21 @@ class AddBook extends Component {
 
   handleSubmit = e => {
     e.preventDefault()
+    const { addBook } = this.props
+    addBook({
+      variables: {
+        name: this.state.bookName,
+        genre: this.state.genre,
+        authorId: this.state.author
+      },
+      refetchQueries: [{ query: getBooksQuery }]
+    })
   }
 
   render() {
-    const { data } = this.props
+    const { authorsList } = this.props
     const { bookName, genre, author } = this.state
+    console.log(this.props)
     return (
       <form onSubmit={this.handleSubmit}>
         <div className="field">
@@ -72,13 +84,16 @@ class AddBook extends Component {
           <label>Author:</label>
           <select onChange={this.handleChange} name="author" value={author}>
             <option>Select author</option>
-            {this._renderAuthors(data)}
+            {this._renderAuthors(authorsList)}
           </select>
         </div>
-        <button>+</button>
+        <button type="submit">+</button>
       </form>
     )
   }
 }
 
-export default graphql(getAuthorsQuery)(AddBook)
+export default compose(
+  graphql(getAuthorsQuery, { name: 'authorsList' }),
+  graphql(addBookMutation, { name: 'addBook' })
+)(AddBook)
