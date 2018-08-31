@@ -13,11 +13,9 @@ The setup uses precommit hook in order to check and run some scripts before any 
 
 ### Installation/Usage
 
-- Clone the repo.
-- cd repo
-- Run ```yarn or npm install``` to install dependencies.
-- Run ``` npm start ``` to start the dev server.
-- Use ``` npm run build ``` command to create a build with no unnecessary code.
+- Run ```yarn``` to install dependencies.
+- Run ``` yarn run start ``` to start the dev server.
+- Use ``` yarn run build ``` command to create a build with no unnecessary code.
 
 ### Commit Message Format
 
@@ -46,9 +44,5 @@ The setup uses precommit hook in order to check and run some scripts before any 
 
  - Commit message must contain a type(any value in the above provided).
 
-
-### Contributions
-
-Contributions for this project are always welcome, just drop a mail at ```jascee.gtbit@gmail.com```, so that I can assign the push access. Or you can always contribute by raising issues and opening pull requests :)
 
 Cheers !!

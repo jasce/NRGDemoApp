@@ -15,8 +15,4 @@ const Welcome = () => (
   </ApolloProvider>
 )
 
-
-
-
-
 export default Welcome
