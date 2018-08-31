@@ -1,63 +1,74 @@
-import React, { Fragment } from 'react'
-import { gql } from 'apollo-boost'
-import { graphql } from 'react-apollo'
+import React, { Fragment, Component } from 'react'
 import PropTypes from 'prop-types'
 
-const getAuthorsQuery = gql`
-  {
-    authors {
-      name
-      id
-    }
+import { graphql } from 'react-apollo'
+import { getAuthorsQuery } from 'Queries'
+class AddBook extends Component {
+  static defaultProps = {
+    data: {}
   }
-`
 
-let _renderAuthors = data => (
-  <Fragment>
-    {data.loading ? (
-      <option disabled>Loading Authors...</option>
-    ) : (
-      <Fragment>
-        {data.authors.map(author => (
-          <option key={author.id} value={author.id}>
-            {author.name}
-          </option>
-        ))}
-      </Fragment>
-    )}
-  </Fragment>
-)
+  static propTypes = {
+    data: PropTypes.object
+  }
 
-let AddBook = props => {
-  const { data } = props
-  return (
-    <form>
-      <div className="field">
-        <label>Book Name:</label>
-        <input type="text" />
-      </div>
-      <div className="field">
-        <label>Genre:</label>
-        <input type="text" />
-      </div>
-      <div className="field">
-        <label>Author:</label>
-        <select>
-          <option>Select author</option>
-          {_renderAuthors(data)}
-        </select>
-      </div>
-      <button>+</button>
-    </form>
+  state = {
+    bookName: '',
+    genre: '',
+    author: ''
+  }
+
+  _renderAuthors = data => (
+    <Fragment>
+      {data.loading ? (
+        <option disabled>Loading Authors...</option>
+      ) : (
+        <Fragment>
+          {data.authors.map(author => (
+            <option key={author.id} value={author.id}>
+              {author.name}
+            </option>
+          ))}
+        </Fragment>
+      )}
+    </Fragment>
   )
-}
 
-AddBook.defaultProps = {
-  data: {}
-}
+  handleChange = e => {
+    const { name, value } = e.target
+    let data = { ...this.state }
+    data[name] = value
+    this.setState(data)
+  }
 
-AddBook.propTypes = {
-  data: PropTypes.object
+  handleSubmit = e => {
+    e.preventDefault()
+  }
+
+  render() {
+    const { data } = this.props
+    const { bookName, genre, author } = this.state
+    return (
+      <form onSubmit={this.handleSubmit}>
+        <div className="field">
+          <label>Book Name:</label>
+          <input type="text" name="bookName" value={bookName} onChange={this.handleChange} />
+        </div>
+        <div className="field">
+          <label>Genre:</label>
+          <input type="text" name="genre" value={genre} onChange={this.handleChange} />
+        </div>
+        <div className="field">
+          <label>Author:</label>
+          <select onChange={this.handleChange} name="author" value={author}>
+            <option>Select author</option>
+            {this._renderAuthors(data)}
+          </select>
+        </div>
+        <button>+</button>
+      </form>
+    )
+  }
 }
 
 export default graphql(getAuthorsQuery)(AddBook)

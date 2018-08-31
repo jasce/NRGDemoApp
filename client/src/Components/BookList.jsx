@@ -1,16 +1,8 @@
 import React, { Fragment } from 'react'
-import { gql } from 'apollo-boost'
-import { graphql } from 'react-apollo'
 import PropTypes from 'prop-types'
 
-const getBooksQuery = gql`
-  {
-    books {
-      name
-      id
-    }
-  }
-`
+import { graphql } from 'react-apollo'
+import { getBooksQuery } from 'Queries'
 
 let _renderBooks = books => (
   <ul>
